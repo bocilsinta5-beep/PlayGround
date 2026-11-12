@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101513" />
+  <title>Emberfall — The Last Lantern</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Emberfall home">
+        <span class="brand-mark">✦</span><span>EMBERFALL</span>
+      </a>
+      <div class="chapter"><span class="chapter-kicker">THE ASHEN ROAD</span><b>Chapter I <i>·</i> The Hollow</b></div>
+      <div class="top-actions">
+        <div class="run-token"><span>◈</span><b id="gold">42</b><small>SHARDS</small></div>
+        <button class="icon-button" id="rulesButton" aria-label="How to play" title="How to play">?</button>
+        <button class="icon-button sound-button" id="soundButton" aria-label="Toggle sound" title="Sound effects">♫</button>
+      </div>
+    </header>
+
+    <section class="game-grid">
+      <aside class="hero-panel panel">
+        <div class="hero-heading"><div><span class="eyebrow">YOUR ADVENTURER</span><h2>Kael <span>the Wayfarer</span></h2></div><span class="level-badge">LVL <b>03</b></span></div>
+        <div class="hero-art" aria-label="Illustration of a lone fantasy adventurer beneath a moonlit mountain">
+          <div class="moon"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div><div class="pine pine-one"></div><div class="pine pine-two"></div>
+          <div class="hero-silhouette"><i class="cloak"></i><i class="head"></i><i class="sword"></i></div>
+          <div class="art-caption">“The dark is only a road<br/>you haven't walked yet.”</div>
+          <span class="art-coordinates">NORTH OF THE OLD KINGDOM · 07:14 PM</span>
+        </div>
+        <div class="hero-vitals">
+          <div class="vital-row"><span class="vital-icon heart">♥</span><div class="vital-content"><div class="vital-label"><b>VITALITY</b><span id="hpText">52 / 60</span></div><div class="meter"><i id="hpBar" class="health-fill"></i></div></div></div>
+          <div class="vital-row"><span class="vital-icon shield">⬟</span><div class="vital-content"><div class="vital-label"><b>GUARD</b><span id="blockText">0</span></div><div class="meter guard-meter"><i id="blockBar"></i></div></div></div>
+        </div>
+        <div class="stats-row"><div><span>⚔</span><b>3</b><small>POWER</small></div><div><span>◈</span><b id="potionCount">2</b><small>POTIONS</small></div><div><span>♧</span><b>04</b><small>RELICS</small></div></div>
+        <button class="potion-button" id="potionButton"><span class="potion-icon">⚗</span><span><b>Drink healing draught</b><small>Restore 12 vitality · 2 remaining</small></span><kbd>Q</kbd></button>
+      </aside>
+
+      <section class="battle-panel panel">
+        <div class="battle-topline"><div><span class="eyebrow">ENCOUNTER <b id="encounterNumber">01</b></span><h1 id="encounterName">A Quiet Ambush</h1></div><div class="round-pill"><span class="round-dot"></span><span>ROUND <b id="roundNumber">01</b></span></div></div>
+        <div class="battlefield" id="battlefield">
+          <div class="sky-glow"></div><div class="battle-moon"></div><div class="battle-ridge ridge-one"></div><div class="battle-ridge ridge-two"></div><div class="battle-ground"></div>
+          <div class="battle-ruin ruin-left"><i></i><i></i></div><div class="battle-ruin ruin-right"><i></i><i></i></div>
+          <div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="enemy-wrap" id="enemyWrap">
+            <div class="enemy-intent" id="enemyIntent"><span class="intent-icon">⚔</span><span><b>STRIKING</b><small>8 damage</small></span></div>
+            <div class="enemy-art" id="enemyArt"><div class="enemy-halo"></div><div class="enemy-body"><i class="enemy-head"></i><i class="enemy-cloak"></i><i class="enemy-arm"></i><i class="enemy-weapon"></i><i class="enemy-eye"></i></div></div>
+            <div class="enemy-nameplate"><span class="enemy-type" id="enemyType">HOLLOW SCOUT · UNDEAD</span><b id="enemyName">The Ashen Stalker</b><div class="enemy-hp-line"><span>♥</span><div class="meter"><i id="enemyHpBar"></i></div><small id="enemyHpText">34 / 34</small></div></div>
+          </div>
+          <div class="hero-battle-figure"><div class="hero-battle-cape"></div><div class="hero-battle-head"></div><div class="hero-battle-sword"></div><div class="hero-shadow"></div></div>
+          <div class="battle-quote" id="battleQuote">A shape stirs in the ash…</div>
+          <div id="rollToast" class="roll-toast" aria-live="polite"></div>
+          <div class="battle-controls"><button id="endTurnButton" class="end-turn"><span>END TURN</span><span class="end-arrow">↗</span></button><span class="turn-hint">Enemies act after your turn</span></div>
+        </div>
+        <div class="battle-footer"><div class="deck-stat"><span class="deck-icon">▤</span><span><b id="drawCount">12</b><small>DRAW PILE</small></span><button id="drawPileButton" aria-label="Show draw pile">⌄</button></div><div class="energy-wrap"><span class="energy-label">FOCUS</span><div id="energyPips" class="energy-pips"></div><span class="energy-count" id="energyText">3 / 3</span></div><div class="deck-stat discard-stat"><span class="deck-icon">▱</span><span><b id="discardCount">0</b><small>DISCARD</small></span><button id="discardPileButton" aria-label="Show discard pile">⌄</button></div></div>
+      </section>
+
+      <aside class="route-panel panel">
+        <div class="route-title"><div><span class="eyebrow">YOUR JOURNEY</span><h2>The Hollow</h2></div><button class="map-button" id="mapButton" aria-label="Show map">⌖</button></div>
+        <div class="route-illustration" aria-label="Map of a winding path through the mountains"><div class="map-constellation">✦ <span>·</span> ✧</div><svg viewBox="0 0 250 210" role="img" aria-label="Route through three encounters"><path class="route-path" d="M38 179 C43 153 89 162 89 131 S58 100 72 77 S136 76 151 49 S185 50 209 23"/><circle class="map-node past" cx="38" cy="179" r="11"/><circle class="map-node current" cx="89" cy="131" r="15"/><circle class="map-node future" cx="72" cy="77" r="10"/><circle class="map-node future" cx="151" cy="49" r="10"/><circle class="map-node boss-node" cx="209" cy="23" r="12"/><text x="38" y="183" text-anchor="middle">✓</text><text x="89" y="136" text-anchor="middle">⚔</text><text x="72" y="81" text-anchor="middle">?</text><text x="151" y="53" text-anchor="middle">♜</text><text x="209" y="27" text-anchor="middle">✦</text></svg><span class="map-label label-one">THE CINDER GATE</span><span class="map-label label-two">YOU ARE HERE</span><span class="map-label label-three">THE WARDEN</span></div>
+        <div class="route-progress"><div class="progress-copy"><span>ROAD PROGRESS</span><b id="progressText">1 <small>/ 4</small></b></div><div class="progress-track"><i id="progressBar"></i></div><p>Four trials stand between you<br/>and the Ember Throne.</p></div>
+        <div class="journal"><span class="journal-icon">✧</span><div><b>FIELD NOTE</b><p id="journalText">The dead don't sleep here. Keep your guard high.</p></div></div>
+      </aside>
+    </section>
+    <section class="hand-area">
+      <div class="hand-header"><div><span class="eyebrow">YOUR HAND</span><span class="hand-subtitle">Choose a card to play</span></div><div class="hand-meta"><span id="handCount">5 CARDS</span><i></i><span>TURN <b id="handTurn">01</b></span></div></div>
+      <div class="card-row" id="cardRow" aria-label="Cards in your hand"></div>
+      <div class="bottom-note"><span>ROLL THE DICE. TRUST YOUR FATE.</span><span class="dice-note"><span>⚄</span> 1 MISSES <i>·</i> 6 CRITS <span>⚄</span></span><span class="keyboard-note">[ SPACE ] END TURN</span></div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal panel" role="dialog" aria-modal="true"><button class="modal-close" id="modalClose" aria-label="Close">×</button><span class="eyebrow" id="modalEyebrow">FIELD GUIDE</span><h2 id="modalTitle">How to play</h2><div id="modalBody"></div><button id="modalAction" class="modal-action" hidden>CONTINUE</button></section></div>
+  <div class="sr-only" id="liveRegion" aria-live="assertive"></div>
+  <script src="game.js"></script>
+</body>
+</html>
